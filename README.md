@@ -2,7 +2,7 @@
 
 ## 1. Аутентификация
 
-(Basic Authentication)
+Все запросы к API требуют базовую аутентификацию (Basic Authentication).
 
 | Параметр | Значение |
 |----------|----------|
@@ -310,7 +310,223 @@ POST /api/factura-create
 
 ---
 
-## 8. Получение списка сохраненных фактур
+## 8. Получение фактуры по ID
+
+### Endpoint
+
+```http
+GET /api/factura-get/{id}
+```
+
+### Назначение
+
+Получение полной информации о фактуре по её уникальному идентификатору.
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Параметры URL
+
+| Параметр | Тип | Описание |
+|----------|-----|---------|
+| `id` | string | Уникальный идентификатор фактуры (FacturaId) |
+
+### Пример запроса
+
+```http
+GET /api/factura-get/6537ce86d694742c34402e2f
+```
+
+### Schema ответа
+
+```json
+{
+  "status": "string",
+  "description": "string",
+  "data": {
+    "ActTransfer": "string",
+    "Buyer": {
+      "Host": "string",
+      "Name": "string",
+      "No": "integer",
+      "Time": "string",
+      "Tin": "string"
+    },
+    "ChargeCalculation": "string",
+    "CreatedAt": "string (ISO 8601)",
+    "ErrMsg": "string",
+    "Factura": {
+      "Buyer": {
+        "Account": "string",
+        "Accountant": "string",
+        "Address": "string",
+        "BankId": "string",
+        "BranchCode": "string",
+        "BranchName": "string",
+        "Director": "string",
+        "DistrictId": "string",
+        "Mobile": "string",
+        "Name": "string",
+        "Oked": "string",
+        "VatRegCode": "string",
+        "VatRegStatus": "integer",
+        "WorkPhone": "string"
+      },
+      "BuyerTin": "string",
+      "ContractDoc": {
+        "ContractDate": "string (YYYY-MM-DD)",
+        "ContractNo": "string"
+      },
+      "ContractId": "string",
+      "FacturaDoc": {
+        "FacturaDate": "string (YYYY-MM-DD)",
+        "FacturaNo": "string"
+      },
+      "FacturaEmpowermentDoc": {
+        "AgentFacturaId": "string",
+        "AgentFio": "string",
+        "AgentPinfl": "string",
+        "EmpowermentDateOfIssue": "string",
+        "EmpowermentNo": "string"
+      },
+      "FacturaId": "string",
+      "FacturaInvestmentObjectDoc": {
+        "ObjectId": "string",
+        "ObjectName": "string"
+      },
+      "FacturaType": "integer",
+      "ForeignCompany": {
+        "Account": "string",
+        "Address": "string",
+        "Bank": "string",
+        "CountryId": "string",
+        "Name": "string"
+      },
+      "HasMarking": "boolean",
+      "IncomeType": "integer",
+      "ItemReleasedDoc": {
+        "ItemReleasedFio": "string",
+        "ItemReleasedPinfl": "string",
+        "ItemReleasedTin": "string"
+      },
+      "LotId": "string",
+      "OldFacturaDoc": {
+        "OldFacturaDate": "string",
+        "OldFacturaId": "string",
+        "OldFacturaNo": "string"
+      },
+      "ProductList": {
+        "FacturaProductId": "string",
+        "HasCommittent": "boolean",
+        "HasExcise": "boolean",
+        "HasLgota": "boolean",
+        "HasMedical": "boolean",
+        "HasVat": "boolean",
+        "HideReportCommittent": "boolean",
+        "Products": [
+          {
+            "BarCode": "string",
+            "BaseSumma": "number",
+            "CatalogCode": "string",
+            "CatalogName": "string",
+            "CommittentName": "string",
+            "CommittentTin": "string",
+            "CommittentVatRegCode": "string",
+            "CommittentVatRegStatus": "integer",
+            "Count": "number",
+            "DeliverySum": "number",
+            "DeliverySumWithVat": "number",
+            "DispenseType": "integer",
+            "ExchangeInfo": {
+              "PlanPositionId": "integer",
+              "ProductCode": "string",
+              "ProductProperties": "string"
+            },
+            "ExciseRate": "number",
+            "ExciseSum": "number",
+            "LgotaId": "integer",
+            "LgotaName": "string",
+            "LgotaType": "integer",
+            "LgotaVatSum": "number",
+            "Marks": {
+              "IdentTransUpak": ["string"],
+              "Kiz": ["string"],
+              "NomUpak": ["string"],
+              "ProductType": "integer"
+            },
+            "MeasureId": "string",
+            "Name": "string",
+            "OrdNo": "integer",
+            "Origin": "integer",
+            "PackageCode": "string",
+            "PackageName": "string",
+            "ProfitRate": "number",
+            "Serial": "string",
+            "Summa": "number",
+            "VatRate": "number",
+            "VatSum": "number",
+            "WarehouseId": "integer",
+            "WarehouseName": "string",
+            "WithoutVat": "boolean"
+          }
+        ],
+        "Tin": "string"
+      },
+      "Seller": {
+        "Account": "string",
+        "Accountant": "string",
+        "Address": "string",
+        "BankId": "string",
+        "BranchCode": "string",
+        "BranchName": "string",
+        "Director": "string",
+        "DistrictId": "string",
+        "Mobile": "string",
+        "Name": "string",
+        "Oked": "string",
+        "VatRegCode": "string",
+        "VatRegStatus": "integer",
+        "WorkPhone": "string"
+      },
+      "SellerTin": "string",
+      "SingleSidedType": "integer",
+      "Version": "integer",
+      "WaybillId": "string",
+      "WaybillIds": ["string"]
+    },
+    "GNK": {
+      "Host": "string",
+      "Name": "string",
+      "No": "integer",
+      "Time": "string",
+      "Tin": "string"
+    },
+    "HasAccessBranch": "integer",
+    "HasApp": "boolean",
+    "Internal": "string",
+    "Notes": "string",
+    "OrganizationId": "string",
+    "PageStatus": "string",
+    "Seller": {
+      "Host": "string",
+      "Name": "string",
+      "No": "integer",
+      "Time": "string",
+      "Tin": "string"
+    },
+    "Sign": "string",
+    "Status": "string",
+    "UpdatedAt": "string (ISO 8601)"
+  },
+  "error": "string",
+  "requestId": "string (UUID)"
+}
+```
+
+---
+
+## 9. Получение списка сохраненных фактур
 
 ### Endpoint
 
@@ -347,49 +563,57 @@ GET /api/v3/lists?path=saved&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20
 
 ```json
 {
-  "data": [
-    {
-      "id": "string",
-      "docNo": "string",
-      "docDate": "string (YYYY-MM-DD)",
-      "sellerName": "string",
-      "buyerName": "string",
-      "summa": "number",
-      "status": "string"
-    }
-  ],
-  "total": "integer",
-  "offset": "integer",
-  "limit": "integer",
-  "success": "boolean"
-}
-```
-
-### Ожидаемый ответ
-
-```json
-{
-  "data": [
-    {
-      "id": "6949f02f526393dfb2d94a60",
-      "docNo": "test2",
-      "docDate": "2025-12-22",
-      "sellerName": "\"GRAND PHARM TRADE\" MCHJ",
-      "buyerName": "4-SON QURILISH TRESTI",
-      "summa": 4032,
-      "status": "draft"
-    }
-  ],
-  "total": 100,
-  "offset": 0,
-  "limit": 20,
-  "success": true
+  "status": "string",
+  "description": "string",
+  "data": {
+    "count": "integer",
+    "documents": [
+      {
+        "agentName": "string",
+        "agentTin": "string",
+        "commission": "boolean",
+        "contractDocDate": "string (YYYY-MM-DD)",
+        "contractDocNo": "string",
+        "createdAt": "string (YYYY-MM-DD HH:MM:SS)",
+        "docDate": "string (YYYY-MM-DD)",
+        "docId": "string",
+        "docNo": "string",
+        "docStatus": "string",
+        "docType": "string",
+        "facturaType": "string",
+        "folderId": "string",
+        "hasVat": "boolean",
+        "hasbenefit": "boolean",
+        "isRead": "integer (0/1)",
+        "isReadAgent": "integer (0/1)",
+        "isSave": "string",
+        "marked": "boolean",
+        "note": "string",
+        "organizationId": "string",
+        "ownerBranchCode": "string",
+        "ownerBranchName": "string",
+        "ownerName": "string",
+        "ownerTin": "string",
+        "partnerBranchCode": "string",
+        "partnerBranchName": "string",
+        "partnerName": "string",
+        "partnerTin": "string",
+        "sentDate": "string (YYYY-MM-DD HH:MM:SS)",
+        "totalDeliverySum": "number",
+        "totalDeliverySumWithVat": "number",
+        "unilateral": "boolean",
+        "updatedAt": "string (YYYY-MM-DD HH:MM:SS)"
+      }
+    ]
+  },
+  "error": "string",
+  "requestId": "string (UUID)"
 }
 ```
 
 ---
 
-## 9. Получение списка отправленных фактур
+## 10. Получение списка отправленных фактур
 
 ### Endpoint
 
@@ -481,131 +705,9 @@ GET /api/v3/lists?path=sent&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&
 }
 ```
 
-### Ожидаемый ответ
-
-```json
-{
-  "status": "OK",
-  "description": "The request has succeeded",
-  "data": {
-    "documents": [
-      {
-        "docId": "694977b9526393dfb2d93350",
-        "docDate": "2025-12-22",
-        "docNo": "5600505600",
-        "docType": "factura",
-        "docStatus": "accept",
-        "contractDocNo": "43/T",
-        "contractDocDate": "2022-01-03",
-        "totalDeliverySum": 1397324.02,
-        "totalVatSum": 167678.88999999996,
-        "totalDeliverySumWithVat": 1565002.9100000001,
-        "ownerTin": "303303592",
-        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-        "ownerBranchCode": "",
-        "partnerTin": "306902565",
-        "partnerName": "Nodirbek Jasur XK",
-        "partnerBranchCode": "",
-        "agentTin": "",
-        "agentName": "",
-        "hasVat": true,
-        "createdAt": "2025-12-22 21:54:22",
-        "updatedAt": "2025-12-23 09:32:27",
-        "commission": false,
-        "unilateral": false,
-        "marked": true,
-        "hasbenefit": false,
-        "hasLot": false,
-        "isRead": 0,
-        "isReadAgent": 0,
-        "ownerBranchName": "",
-        "partnerBranchName": "",
-        "note": "",
-        "organizationId": "",
-        "folderId": 0,
-        "facturaType": "0",
-        "reqId": "",
-        "deletedAt": 0
-      },
-      {
-        "docId": "6944e3142765fffd29b305f4",
-        "docDate": "2025-12-19",
-        "docNo": "5600501271",
-        "docType": "factura",
-        "docStatus": "accept",
-        "contractDocNo": "831/B",
-        "contractDocDate": "2024-10-21",
-        "totalDeliverySum": 4431884,
-        "totalVatSum": 531826.0799999998,
-        "totalDeliverySumWithVat": 4963710.08,
-        "ownerTin": "303303592",
-        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-        "ownerBranchCode": "",
-        "partnerTin": "303095995",
-        "partnerName": "SHADMAN PHARM MCHJ",
-        "partnerBranchCode": "",
-        "agentTin": "",
-        "agentName": "",
-        "hasVat": true,
-        "createdAt": "2025-12-19 10:31:08",
-        "updatedAt": "2025-12-23 09:31:07",
-        "commission": false,
-        "unilateral": false,
-        "marked": true,
-        "hasbenefit": false,
-        "hasLot": false,
-        "isRead": 0,
-        "isReadAgent": 0,
-        "ownerBranchName": "",
-        "partnerBranchName": "",
-        "note": "",
-        "organizationId": "",
-        "folderId": 0,
-        "facturaType": "0",
-        "reqId": "",
-        "deletedAt": 0
-      }
-    ],
-    "count": 0,
-    "totalDeliverySum": 0,
-    "totalVatSum": 0,
-    "totalDeliverySumWithVat": 0,
-    "hasMarking": true,
-    "hasNote": false
-  },
-  "error": "",
-  "requestId": "019b497b-688f-705e-aa79-30312cf0fe4b"
-}
-```
-
-### Описание полей ответа
-
-| Поле | Тип | Описание |
-|------|-----|---------|
-| `docId` | string | Уникальный идентификатор документа |
-| `docDate` | string | Дата фактуры (YYYY-MM-DD) |
-| `docNo` | string | Номер фактуры |
-| `docType` | string | Тип документа (factura) |
-| `docStatus` | string | Статус документа (accept, reject и т.д.) |
-| `contractDocNo` | string | Номер контракта |
-| `contractDocDate` | string | Дата контракта |
-| `totalDeliverySum` | number | Сумма без НДС |
-| `totalVatSum` | number | Сумма НДС |
-| `totalDeliverySumWithVat` | number | Итоговая сумма с НДС |
-| `ownerTin` | string | ИНН продавца |
-| `ownerName` | string | Наименование продавца |
-| `partnerTin` | string | ИНН покупателя |
-| `partnerName` | string | Наименование покупателя |
-| `hasVat` | boolean | Содержит ли НДС |
-| `marked` | boolean | Маркирована ли фактура |
-| `createdAt` | string | Дата создания (YYYY-MM-DD HH:MM:SS) |
-| `updatedAt` | string | Дата последнего обновления (YYYY-MM-DD HH:MM:SS) |
-| `isRead` | integer | Прочитана ли фактура продавцом (0/1) |
-| `isReadAgent` | integer | Прочитана ли фактура покупателем (0/1) |
-
 ---
 
-## 10. Получение списка документов с ошибками
+## 11. Получение списка документов с ошибками
 
 ### Endpoint
 
@@ -782,4 +884,3 @@ GET /api/v3/lists?path=error&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20
   "error": "",
   "requestId": "019b497c-1fbb-78d3-9321-daeaf24021ac"
 }
-```
