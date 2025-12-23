@@ -2,7 +2,7 @@
 
 ## 1. Аутентификация
 
-Все запросы к API требуют базовую аутентификацию (Basic Authentication).
+(Basic Authentication)
 
 | Параметр | Значение |
 |----------|----------|
@@ -307,3 +307,118 @@ POST /api/factura-create
 | Параметр | Тип | Описание |
 |----------|-----|---------|
 | `sign` | string | Подписанный PKCS7 с timestamp |
+
+---
+
+## 8. Получение списка сохраненных фактур
+
+### Endpoint
+
+```http
+GET /api/v3/lists
+```
+
+### Назначение
+
+Получение списка сохраненных фактур с возможностью фильтрации и пагинации.
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Query параметры
+
+| Параметр | Тип | Описание | Пример |
+|----------|-----|---------|---------|
+| `path` | string | Тип папки (сохраненные документы) | `saved` |
+| `docType` | string | Тип документа | `factura` |
+| `limit` | integer | Количество результатов на странице | `20` |
+| `offset` | integer | Смещение для пагинации (начиная с 0) | `0` |
+| `fromDocDate` | string | Дата начала фильтра (YYYY-MM-DD) | `2025-11-01` |
+| `folderId` | integer | ID папки (0 для всех папок) | `0` |
+
+### Пример запроса
+
+```http
+GET /api/v3/lists?path=saved&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20&docType=factura
+```
+
+### Ожидаемый ответ
+
+```json
+{
+  "data": [
+    {
+      "id": "6949f02f526393dfb2d94a60",
+      "docNo": "test2",
+      "docDate": "2025-12-22",
+      "sellerName": "\"GRAND PHARM TRADE\" MCHJ",
+      "buyerName": "4-SON QURILISH TRESTI",
+      "summa": 4032,
+      "status": "draft"
+    }
+  ],
+  "total": 100,
+  "offset": 0,
+  "limit": 20,
+  "success": true
+}
+```
+
+---
+
+## 9. Получение списка отправленных фактур
+
+### Endpoint
+
+```http
+GET /api/v3/lists
+```
+
+### Назначение
+
+Получение списка отправленных (подписанных) фактур с возможностью фильтрации и пагинации.
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Query параметры
+
+| Параметр | Тип | Описание | Пример |
+|----------|-----|---------|---------|
+| `path` | string | Тип папки (отправленные документы) | `sent` |
+| `docType` | string | Тип документа | `factura` |
+| `limit` | integer | Количество результатов на странице | `20` |
+| `offset` | integer | Смещение для пагинации (начиная с 0) | `0` |
+| `fromDocDate` | string | Дата начала фильтра (YYYY-MM-DD) | `2025-01-01` |
+| `folderId` | integer | ID папки (0 для всех папок) | `0` |
+
+### Пример запроса
+
+```http
+GET /api/v3/lists?path=sent&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&docType=factura
+```
+
+### Ожидаемый ответ
+
+```json
+{
+  "data": [
+    {
+      "id": "6949f02f526393dfb2d94a60",
+      "docNo": "test2",
+      "docDate": "2025-12-22",
+      "sellerName": "\"GRAND PHARM TRADE\" MCHJ",
+      "buyerName": "4-SON QURILISH TRESTI",
+      "summa": 4032,
+      "status": "sent",
+      "signedDate": "2025-12-22T10:30:00Z"
+    }
+  ],
+  "total": 150,
+  "offset": 0,
+  "limit": 20,
+  "success": true
+}
+```
