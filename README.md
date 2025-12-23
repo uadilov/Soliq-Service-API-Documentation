@@ -10,7 +10,6 @@
 | Username | grand_pharm |
 | Password | 7C6U0WsXqIw7FO71BqS |
 
-Заголовок `Authorization` обязателен для всех запросов.
 
 ---
 
