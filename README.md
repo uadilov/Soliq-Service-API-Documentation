@@ -2,7 +2,7 @@
 
 ## 1. Аутентификация
 
-Все запросы к API требуют базовую аутентификацию (Basic Authentication).
+(Basic Authentication)
 
 | Параметр | Значение |
 |----------|----------|
@@ -343,6 +343,28 @@ GET /api/v3/lists
 GET /api/v3/lists?path=saved&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20&docType=factura
 ```
 
+### Schema ответа
+
+```json
+{
+  "data": [
+    {
+      "id": "string",
+      "docNo": "string",
+      "docDate": "string (YYYY-MM-DD)",
+      "sellerName": "string",
+      "buyerName": "string",
+      "summa": "number",
+      "status": "string"
+    }
+  ],
+  "total": "integer",
+  "offset": "integer",
+  "limit": "integer",
+  "success": "boolean"
+}
+```
+
 ### Ожидаемый ответ
 
 ```json
@@ -398,6 +420,65 @@ GET /api/v3/lists
 
 ```http
 GET /api/v3/lists?path=sent&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&docType=factura
+```
+
+### Schema ответа
+
+```json
+{
+  "status": "string",
+  "description": "string",
+  "data": {
+    "documents": [
+      {
+        "docId": "string",
+        "docDate": "string (YYYY-MM-DD)",
+        "docNo": "string",
+        "docType": "string",
+        "docStatus": "string",
+        "contractDocNo": "string",
+        "contractDocDate": "string (YYYY-MM-DD)",
+        "totalDeliverySum": "number",
+        "totalVatSum": "number",
+        "totalDeliverySumWithVat": "number",
+        "ownerTin": "string",
+        "ownerName": "string",
+        "ownerBranchCode": "string",
+        "partnerTin": "string",
+        "partnerName": "string",
+        "partnerBranchCode": "string",
+        "agentTin": "string",
+        "agentName": "string",
+        "hasVat": "boolean",
+        "createdAt": "string (YYYY-MM-DD HH:MM:SS)",
+        "updatedAt": "string (YYYY-MM-DD HH:MM:SS)",
+        "commission": "boolean",
+        "unilateral": "boolean",
+        "marked": "boolean",
+        "hasbenefit": "boolean",
+        "hasLot": "boolean",
+        "isRead": "integer (0/1)",
+        "isReadAgent": "integer (0/1)",
+        "ownerBranchName": "string",
+        "partnerBranchName": "string",
+        "note": "string",
+        "organizationId": "string",
+        "folderId": "integer",
+        "facturaType": "string",
+        "reqId": "string",
+        "deletedAt": "integer"
+      }
+    ],
+    "count": "integer",
+    "totalDeliverySum": "number",
+    "totalVatSum": "number",
+    "totalDeliverySumWithVat": "number",
+    "hasMarking": "boolean",
+    "hasNote": "boolean"
+  },
+  "error": "string",
+  "requestId": "string (UUID)"
+}
 ```
 
 ### Ожидаемый ответ
@@ -555,6 +636,65 @@ GET /api/v3/lists
 
 ```http
 GET /api/v3/lists?path=error&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20&docType=factura
+```
+
+### Schema ответа
+
+```json
+{
+  "status": "string",
+  "description": "string",
+  "data": {
+    "documents": [
+      {
+        "docId": "string",
+        "docDate": "string (YYYY-MM-DD)",
+        "docNo": "string",
+        "docType": "string",
+        "docStatus": "string (fail)",
+        "contractDocNo": "string",
+        "contractDocDate": "string (YYYY-MM-DD)",
+        "totalDeliverySum": "number",
+        "totalVatSum": "number",
+        "totalDeliverySumWithVat": "number",
+        "ownerTin": "string",
+        "ownerName": "string",
+        "ownerBranchCode": "string",
+        "partnerTin": "string",
+        "partnerName": "string",
+        "partnerBranchCode": "string",
+        "agentTin": "string",
+        "agentName": "string",
+        "hasVat": "boolean",
+        "createdAt": "string (YYYY-MM-DD HH:MM:SS)",
+        "updatedAt": "string (YYYY-MM-DD HH:MM:SS)",
+        "commission": "boolean",
+        "unilateral": "boolean",
+        "marked": "boolean",
+        "hasbenefit": "boolean",
+        "hasLot": "boolean",
+        "isRead": "integer (0/1)",
+        "isReadAgent": "integer (0/1)",
+        "ownerBranchName": "string",
+        "partnerBranchName": "string",
+        "note": "string (описание ошибки)",
+        "organizationId": "string",
+        "folderId": "integer",
+        "facturaType": "string",
+        "reqId": "string",
+        "deletedAt": "integer"
+      }
+    ],
+    "count": "integer",
+    "totalDeliverySum": "number",
+    "totalVatSum": "number",
+    "totalDeliverySumWithVat": "number",
+    "hasMarking": "boolean",
+    "hasNote": "boolean"
+  },
+  "error": "string",
+  "requestId": "string (UUID)"
+}
 ```
 
 ### Ожидаемый ответ
