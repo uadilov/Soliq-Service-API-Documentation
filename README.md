@@ -526,17 +526,17 @@ GET /api/factura-get/6537ce86d694742c34402e2f
 
 ---
 
-## 9. Получение списка сохраненных фактур
+## 9. Получение списка документов (универсальный)
 
 ### Endpoint
 
 ```http
-GET /api/v3/lists
+GET /api/get-all-docs
 ```
 
 ### Назначение
 
-Получение списка сохраненных фактур с возможностью фильтрации и пагинации.
+Получение списка документов с расширенными возможностями фильтрации и пагинации.
 
 ### Авторизация
 
@@ -546,17 +546,43 @@ GET /api/v3/lists
 
 | Параметр | Тип | Описание | Пример |
 |----------|-----|---------|---------|
-| `path` | string | Тип папки (сохраненные документы) | `saved` |
 | `docType` | string | Тип документа | `factura` |
-| `limit` | integer | Количество результатов на странице | `20` |
-| `offset` | integer | Смещение для пагинации (начиная с 0) | `0` |
-| `fromDocDate` | string | Дата начала фильтра (YYYY-MM-DD) | `2025-11-01` |
-| `folderId` | integer | ID папки (0 для всех папок) | `0` |
+| `docStatus` | string | Статус документа (через запятую) | `accept,reject,cancel` |
+| `limit` | integer | Количество результатов на странице | `10` |
+| `offset` | integer | Смещение для пагинации | `0` |
+| `fromDocDate` | string | Дата начала по дате документа | `2023-03-01` |
+| `toDocDate` | string | Дата окончания по дате документа | `2023-03-31` |
+| `fromDate` | string | Дата начала по дате создания | `2023-04-05` |
+| `toDate` | string | Дата окончания по дате создания | `2023-04-30` |
+| `docNo` | string | Номер документа | `test` |
+| `docId` | string | ID документа | |
+| `contractDocNo` | string | Номер контракта | `23` |
+| `contractDocDate` | string | Дата контракта | |
+| `ownerTin` | string | ИНН продавца | `200523221` |
+| `ownerName` | string | Наименование продавца | |
+| `ownerPinfl` | string | ПИНФЛ продавца | |
+| `ownerBranchCode` | string | Код филиала продавца | |
+| `partnerTin` | string | ИНН покупателя | `203335595` |
+| `partnerName` | string | Наименование покупателя | |
+| `partnerPinfl` | string | ПИНФЛ покупателя | |
+| `partnerBranchCode` | string | Код филиала покупателя | `00068` |
+| `agentTin` | string | ИНН агента | |
+| `agentName` | string | Наименование агента | |
+| `agentPinfl` | string | ПИНФЛ агента | |
+| `facturaType` | string | Тип фактуры | |
+| `hasVat` | boolean | Содержит НДС | |
+| `marked` | boolean | Маркированная | |
+| `commission` | boolean | Комиссионная | |
+| `unilateral` | boolean | Односторонняя | |
+| `hasbenefit` | boolean | Со льготой | |
+| `isSave` | string | Сохранена | |
+| `totalSum` | string | Общая сумма | |
+| `organization` | string | Организация | `organization` |
 
 ### Пример запроса
 
 ```http
-GET /api/v3/lists?path=saved&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20&docType=factura
+GET /api/get-all-docs?docType=factura&limit=10&offset=0&fromDocDate=2023-03-01
 ```
 
 ### Schema ответа
@@ -613,40 +639,64 @@ GET /api/v3/lists?path=saved&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20
 
 ---
 
-## 10. Получение списка отправленных фактур
+## 10. Примеры использования фильтров
 
-### Endpoint
-
-```http
-GET /api/v3/lists
-```
-
-### Назначение
-
-Получение списка отправленных (подписанных) фактур с возможностью фильтрации и пагинации.
-
-### Авторизация
-
-- Basic Auth (обязательна)
-
-### Query параметры
-
-| Параметр | Тип | Описание | Пример |
-|----------|-----|---------|---------|
-| `path` | string | Тип папки (отправленные документы) | `sent` |
-| `docType` | string | Тип документа | `factura` |
-| `limit` | integer | Количество результатов на странице | `20` |
-| `offset` | integer | Смещение для пагинации (начиная с 0) | `0` |
-| `fromDocDate` | string | Дата начала фильтра (YYYY-MM-DD) | `2025-01-01` |
-| `folderId` | integer | ID папки (0 для всех папок) | `0` |
-
-### Пример запроса
+### Получение отправленных фактур
 
 ```http
-GET /api/v3/lists?path=sent&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&docType=factura
+GET /api/get-all-docs?docType=factura&docStatus=accept&fromDocDate=2025-01-01
 ```
 
-### Schema ответа
+### Получение документов с ошибками
+
+```http
+GET /api/get-all-docs?docType=factura&docStatus=fail&fromDocDate=2025-11-01
+```
+
+### Поиск по контрагенту
+
+```http
+GET /api/get-all-docs?docType=factura&partnerTin=203335595&limit=20
+```
+
+### Расширенная фильтрация
+
+```http
+GET /api/get-all-docs?docType=factura&hasVat=true&marked=true&fromDocDate=2025-01-01&toDocDate=2025-12-31
+```
+
+---
+
+## 11. Статусы документов
+
+| Статус | Описание |
+|--------|----------|
+| `accept` | Принят |
+| `reject` | Отклонен |
+| `cancel` | Отменен |
+| `receive` | Получен |
+| `revoked_by_gnk` | Аннулирован ГНК |
+| `agent_receive` | Получен агентом |
+| `agent_reject` | Отклонен агентом |
+| `agent_accept` | Принят агентом |
+| `pending` | Ожидает обработки |
+| `template` | Шаблон |
+| `sample` | Образец |
+| `sent` | Отправлен |
+| `not_real` | Не реальный |
+| `not_found` | Не найден |
+| `fail` | Ошибка |
+
+---
+
+## 12. Типичные ошибки и решения
+
+| Ошибка | Решение |
+|--------|----------|
+| Контрагент не подтвердил документ | Убедитесь, что контрагент принял и подтвердил исходный документ |
+| Некорректный ID лота | Проверьте правильность указанного ID лота |
+| Статус юр.лица: ликвидировано | Контрагент больше не существует в реестре |
+| ID прежнего счета-фактуры некорректный | Укажите правильный ID исходного документа для исправления |
 
 ```json
 {
