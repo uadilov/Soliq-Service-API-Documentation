@@ -2,7 +2,7 @@
 
 ## 1. Аутентификация
 
-(Basic Authentication)
+Все запросы к API требуют базовую аутентификацию (Basic Authentication).
 
 | Параметр | Значение |
 |----------|----------|
@@ -404,21 +404,261 @@ GET /api/v3/lists?path=sent&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&
 
 ```json
 {
-  "data": [
-    {
-      "id": "6949f02f526393dfb2d94a60",
-      "docNo": "test2",
-      "docDate": "2025-12-22",
-      "sellerName": "\"GRAND PHARM TRADE\" MCHJ",
-      "buyerName": "4-SON QURILISH TRESTI",
-      "summa": 4032,
-      "status": "sent",
-      "signedDate": "2025-12-22T10:30:00Z"
-    }
-  ],
-  "total": 150,
-  "offset": 0,
-  "limit": 20,
-  "success": true
+  "status": "OK",
+  "description": "The request has succeeded",
+  "data": {
+    "documents": [
+      {
+        "docId": "694977b9526393dfb2d93350",
+        "docDate": "2025-12-22",
+        "docNo": "5600505600",
+        "docType": "factura",
+        "docStatus": "accept",
+        "contractDocNo": "43/T",
+        "contractDocDate": "2022-01-03",
+        "totalDeliverySum": 1397324.02,
+        "totalVatSum": 167678.88999999996,
+        "totalDeliverySumWithVat": 1565002.9100000001,
+        "ownerTin": "303303592",
+        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+        "ownerBranchCode": "",
+        "partnerTin": "306902565",
+        "partnerName": "Nodirbek Jasur XK",
+        "partnerBranchCode": "",
+        "agentTin": "",
+        "agentName": "",
+        "hasVat": true,
+        "createdAt": "2025-12-22 21:54:22",
+        "updatedAt": "2025-12-23 09:32:27",
+        "commission": false,
+        "unilateral": false,
+        "marked": true,
+        "hasbenefit": false,
+        "hasLot": false,
+        "isRead": 0,
+        "isReadAgent": 0,
+        "ownerBranchName": "",
+        "partnerBranchName": "",
+        "note": "",
+        "organizationId": "",
+        "folderId": 0,
+        "facturaType": "0",
+        "reqId": "",
+        "deletedAt": 0
+      },
+      {
+        "docId": "6944e3142765fffd29b305f4",
+        "docDate": "2025-12-19",
+        "docNo": "5600501271",
+        "docType": "factura",
+        "docStatus": "accept",
+        "contractDocNo": "831/B",
+        "contractDocDate": "2024-10-21",
+        "totalDeliverySum": 4431884,
+        "totalVatSum": 531826.0799999998,
+        "totalDeliverySumWithVat": 4963710.08,
+        "ownerTin": "303303592",
+        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+        "ownerBranchCode": "",
+        "partnerTin": "303095995",
+        "partnerName": "SHADMAN PHARM MCHJ",
+        "partnerBranchCode": "",
+        "agentTin": "",
+        "agentName": "",
+        "hasVat": true,
+        "createdAt": "2025-12-19 10:31:08",
+        "updatedAt": "2025-12-23 09:31:07",
+        "commission": false,
+        "unilateral": false,
+        "marked": true,
+        "hasbenefit": false,
+        "hasLot": false,
+        "isRead": 0,
+        "isReadAgent": 0,
+        "ownerBranchName": "",
+        "partnerBranchName": "",
+        "note": "",
+        "organizationId": "",
+        "folderId": 0,
+        "facturaType": "0",
+        "reqId": "",
+        "deletedAt": 0
+      }
+    ],
+    "count": 0,
+    "totalDeliverySum": 0,
+    "totalVatSum": 0,
+    "totalDeliverySumWithVat": 0,
+    "hasMarking": true,
+    "hasNote": false
+  },
+  "error": "",
+  "requestId": "019b497b-688f-705e-aa79-30312cf0fe4b"
 }
 ```
+
+### Описание полей ответа
+
+| Поле | Тип | Описание |
+|------|-----|---------|
+| `docId` | string | Уникальный идентификатор документа |
+| `docDate` | string | Дата фактуры (YYYY-MM-DD) |
+| `docNo` | string | Номер фактуры |
+| `docType` | string | Тип документа (factura) |
+| `docStatus` | string | Статус документа (accept, reject и т.д.) |
+| `contractDocNo` | string | Номер контракта |
+| `contractDocDate` | string | Дата контракта |
+| `totalDeliverySum` | number | Сумма без НДС |
+| `totalVatSum` | number | Сумма НДС |
+| `totalDeliverySumWithVat` | number | Итоговая сумма с НДС |
+| `ownerTin` | string | ИНН продавца |
+| `ownerName` | string | Наименование продавца |
+| `partnerTin` | string | ИНН покупателя |
+| `partnerName` | string | Наименование покупателя |
+| `hasVat` | boolean | Содержит ли НДС |
+| `marked` | boolean | Маркирована ли фактура |
+| `createdAt` | string | Дата создания (YYYY-MM-DD HH:MM:SS) |
+| `updatedAt` | string | Дата последнего обновления (YYYY-MM-DD HH:MM:SS) |
+| `isRead` | integer | Прочитана ли фактура продавцом (0/1) |
+| `isReadAgent` | integer | Прочитана ли фактура покупателем (0/1) |
+
+---
+
+## 10. Получение списка документов с ошибками
+
+### Endpoint
+
+```http
+GET /api/v3/lists
+```
+
+### Назначение
+
+Получение списка документов, которые не прошли проверку или отправку (со статусом "fail").
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Query параметры
+
+| Параметр | Тип | Описание | Пример |
+|----------|-----|---------|---------|
+| `path` | string | Тип папки (ошибки/неудачные документы) | `error` |
+| `docType` | string | Тип документа | `factura` |
+| `limit` | integer | Количество результатов на странице | `20` |
+| `offset` | integer | Смещение для пагинации (начиная с 0) | `0` |
+| `fromDocDate` | string | Дата начала фильтра (YYYY-MM-DD) | `2025-11-01` |
+| `folderId` | integer | ID папки (0 для всех папок) | `0` |
+
+### Пример запроса
+
+```http
+GET /api/v3/lists?path=error&offset=0&fromDocDate=2025-11-01&folderId=0&limit=20&docType=factura
+```
+
+### Ожидаемый ответ
+
+```json
+{
+  "status": "OK",
+  "description": "The request has succeeded",
+  "data": {
+    "documents": [
+      {
+        "docId": "69490c31147b8756313155bf",
+        "docDate": "2025-12-22",
+        "docNo": "5600504446",
+        "docType": "factura",
+        "docStatus": "fail",
+        "contractDocNo": "46/B",
+        "contractDocDate": "2022-01-05",
+        "totalDeliverySum": -4170539,
+        "totalVatSum": -500464.68,
+        "totalDeliverySumWithVat": -4671003.68,
+        "ownerTin": "303303592",
+        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+        "partnerTin": "308456691",
+        "partnerName": "AVITSENNA FARM SINTES MCHJ",
+        "hasVat": true,
+        "createdAt": "2025-12-22 14:15:34",
+        "updatedAt": "2025-12-23 06:34:06",
+        "marked": true,
+        "facturaType": "1",
+        "note": "Eski hisobvaraq-faktura kontragent tomonidan tasdiqlanmagan. Eski hisobvaraq-faktura holat kodi: 20"
+      },
+      {
+        "docId": "69458bb2f9b1aa8789aeaee2",
+        "docDate": "2025-12-19",
+        "docNo": "5600502480",
+        "docType": "factura",
+        "docStatus": "fail",
+        "contractDocNo": "179/B",
+        "contractDocDate": "2022-01-06",
+        "totalDeliverySum": -759892,
+        "totalVatSum": -91187.04,
+        "totalDeliverySumWithVat": -851079.04,
+        "ownerTin": "303303592",
+        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+        "partnerTin": "302147961",
+        "partnerName": "Azim Farm Med MCHJ",
+        "hasVat": true,
+        "createdAt": "2025-12-19 22:30:40",
+        "updatedAt": "2025-12-19 22:42:37",
+        "marked": false,
+        "facturaType": "1",
+        "note": "Прежний счёт-фактура не подтверждён второй стороной. Код статуса прежнего ЭСФ: 20"
+      },
+      {
+        "docId": "693ff7030e27bc442a476e62",
+        "docDate": "2025-12-15",
+        "docNo": "5600492712",
+        "docType": "factura",
+        "docStatus": "fail",
+        "contractDocNo": "ОПТ/28",
+        "contractDocDate": "2025-01-09",
+        "totalDeliverySum": -2740375,
+        "totalVatSum": -328845,
+        "totalDeliverySumWithVat": -3069220,
+        "ownerTin": "303303592",
+        "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+        "partnerTin": "305335876",
+        "partnerName": "DRUG-PROMOTION MCHJ",
+        "hasVat": true,
+        "createdAt": "2025-12-15 16:54:44",
+        "updatedAt": "2025-12-19 12:14:26",
+        "marked": true,
+        "facturaType": "1",
+        "note": "Общая сумма НДС всех товаров основного и дополнительного ЭСФ не должна быть меньше нуля!"
+      }
+    ],
+    "count": 0,
+    "totalDeliverySum": 0,
+    "totalVatSum": 0,
+    "totalDeliverySumWithVat": 0,
+    "hasMarking": true,
+    "hasNote": true
+  },
+  "error": "",
+  "requestId": "019b497c-1fbb-78d3-9321-daeaf24021ac"
+}
+```
+
+### Описание основных полей ошибок
+
+| Поле | Описание |
+|------|---------|
+| `docStatus: "fail"` | Документ имеет статус ошибки |
+| `note` | Описание ошибки (причина отклонения) |
+| `facturaType: "1"` | Исправительная фактура (возвратная) |
+| Отрицательные суммы | Документ является возвратной накладной (кредит-нота) |
+
+### Типичные ошибки и решения
+
+| Ошибка | Решение |
+|--------|---------|
+| Контрагент не подтвердил документ | Убедитесь, что контрагент принял и подтвердил исходный документ |
+| Некорректный ID лота | Проверьте правильность указанного ID лота |
+| Статус юр.лица: ликвидировано | Контрагент больше не существует в реестре |
+| Сумма НДС меньше нуля | Проверьте корректность расчета НДС в исправительной фактуре |
+| ID прежнего счета-фактуры некорректный | Укажите правильный ID исходного документа для исправления |
