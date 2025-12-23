@@ -108,6 +108,10 @@ POST /api/factura-save
 - Basic Auth (обязательна)
 - Заголовок `Authorization` обязателен
 
+### Документация
+
+- [Структура JSON – Счёт-фактура](https://docs.google.com/document/d/1exQg1vDhMH2WFsI_MadK9ZbtN7RyJ4XS/edit?pli=1&tab=t.0)
+
 ### Тело запроса
 
 ```json
