@@ -679,3 +679,75 @@ GET /api/get-all-docs?docType=factura&hasVat=true&marked=true&fromDocDate=2025-0
 ```
 
 ---
+
+## 11. Отмена фактуры (Cancel Factura)
+
+### Авторизация
+
+**Basic Auth (обязательна)**
+
+### 11.1 Формирование подписи PKCS#7
+
+JSON фактуры подписывается с использованием ключа ЭЦП в формате PKCS#7. JSON должен быть в минифицированном формате.
+
+### 11.2 Проставление timestamp
+
+#### Endpoint
+
+```http
+POST /frontend/timestamp/pkcs7
+```
+
+#### Результат
+
+Подписанный PKCS7 с timestamp.
+
+### 11.3 Пример для получения подписи
+
+```json
+{
+  "SellerTin": "303303592",
+  "FacturaId": "695d2d271a38709aa4a69767"
+}
+```
+
+### 11.4 POST запрос для отмены фактуры
+
+#### Endpoint
+
+```http
+POST https://v3.soliqservis.uz:3443/api/factura/cancel?tin=303303592
+```
+
+#### Body
+
+```json
+{
+  "facturaId": "695d2d271a38709aa4a69767",
+  "sign": "<Sign>"
+}
+```
+
+#### Параметры
+
+| Параметр | Описание | Тип |
+|----------|---------|-----|
+| `tin` | ИНН продавца (query параметр) | string |
+| `facturaId` | Идентификатор фактуры для отмены | string |
+| `sign` | Подписанный PKCS#7 с ЭЦП | string |
+
+#### Пример ответа
+
+```json
+{
+  "status": "success",
+  "description": "Фактура успешно отменена",
+  "data": {
+    "facturaId": "695d2d271a38709aa4a69767",
+    "canceledAt": "2025-01-09 10:30:45"
+  },
+  "requestId": "550e8400-e29b-41d4-a716-446655440000"
+}
+```
+
+---
