@@ -740,13 +740,11 @@ POST https://v3.soliqservis.uz:3443/api/factura/cancel?tin=303303592
 
 ```json
 {
-  "status": "success",
-  "description": "Фактура успешно отменена",
-  "data": {
-    "facturaId": "695d2d271a38709aa4a69767",
-    "canceledAt": "2025-01-09 10:30:45"
-  },
-  "requestId": "550e8400-e29b-41d4-a716-446655440000"
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": "OK",
+    "error": "",
+    "requestId": "019ba2d1-8125-71bc-8407-bf76ea7a9260"
 }
 ```
 
