@@ -748,4 +748,40 @@ POST https://v3.soliqservis.uz:3443/api/factura/cancel?tin=303303592
 }
 ```
 
+## 12. Удалить сохранённые счета-фактуры
+
+
+### Авторизация
+
+**Basic Auth (обязательна)**
+
+#### Endpoint
+
+```http
+DELETE https://v3.soliqservis.uz:3443/api/lists-delete
+```
+
+#### Body
+
+```json
+{
+  "docIds": [
+    "<factura id>"
+  ],
+  "ownerTin": "303303592"
+}
+```
+
+#### Пример ответа
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": "OK",
+    "error": "",
+    "requestId": "019bb0ca-009e-750c-b97b-0deb44a4469b"
+}
+```
+
 ---
