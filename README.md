@@ -814,6 +814,10 @@ GET /api/utils/guid
 
 ## 2. Получить Регионы ТТН
 
+### Авторизация
+
+- Basic Auth (обязательна)
+
 ### Endpoint
 
 ```http
@@ -990,3 +994,157 @@ GET /api/waybill-region-basic
 -  `RegionName`
 
 ---
+
+## 3. Получить Районы ТТН
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Endpoint
+
+```http
+GET /api/waybill-district-basic?regionId=<regionId>
+```
+
+### Ответ
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": [
+        {
+            "active": 1,
+            "districtCode": 10,
+            "name": "Uchtepa district",
+            "nameRu": "Учтепинский район",
+            "nameUzCyrl": "Учтепа тумани",
+            "nameUzLatn": "Uchtepa tumani",
+            "regionId": 26,
+            "soato": 1726262
+        },
+        {
+            "active": 1,
+            "districtCode": 11,
+            "name": "Bektemir district",
+            "nameRu": "Бектемирский район",
+            "nameUzCyrl": "Бектемир тумани",
+            "nameUzLatn": "Bektemir tumani",
+            "regionId": 26,
+            "soato": 1726264
+        },
+        {
+            "active": 1,
+            "districtCode": 3,
+            "name": "Yunusabad district",
+            "nameRu": "Юнусабадский район",
+            "nameUzCyrl": "Юнусобод тумани",
+            "nameUzLatn": "Yunusobod tumani",
+            "regionId": 26,
+            "soato": 1726266
+        },
+        {
+            "active": 1,
+            "districtCode": 2,
+            "name": "Mirzo-Ulugbek district",
+            "nameRu": "Мирзо-Улугбекский район",
+            "nameUzCyrl": "Мирзо Улуғбек тумани",
+            "nameUzLatn": "Mirzo Ulug'bek tumani",
+            "regionId": 26,
+            "soato": 1726269
+        },
+        {
+            "active": 1,
+            "districtCode": 1,
+            "name": "Mirabad district",
+            "nameRu": "Мирабадский район",
+            "nameUzCyrl": "Миробод тумани",
+            "nameUzLatn": "Mirobod tumani",
+            "regionId": 26,
+            "soato": 1726273
+        },
+        {
+            "active": 1,
+            "districtCode": 5,
+            "name": "Shaykhantakhur district",
+            "nameRu": "Шайхантахурский район",
+            "nameUzCyrl": "Шайхонтохур тумани",
+            "nameUzLatn": "Shayxontoxur tumani",
+            "regionId": 26,
+            "soato": 1726277
+        },
+        {
+            "active": 1,
+            "districtCode": 9,
+            "name": "Almazar district",
+            "nameRu": "Алмазарский район",
+            "nameUzCyrl": "Олмазор тумани",
+            "nameUzLatn": "Olmazor tumani",
+            "regionId": 26,
+            "soato": 1726280
+        },
+        {
+            "active": 1,
+            "districtCode": 7,
+            "name": "Sergeli district",
+            "nameRu": "Сергелийский район",
+            "nameUzCyrl": "Сирғали тумани",
+            "nameUzLatn": "Sirg'ali tumani",
+            "regionId": 26,
+            "soato": 1726283
+        },
+        {
+            "active": 1,
+            "districtCode": 4,
+            "name": "Yakkasaray district",
+            "nameRu": "Яккасарайский район",
+            "nameUzCyrl": "Яккасарой тумани",
+            "nameUzLatn": "Yakkasaroy tumani",
+            "regionId": 26,
+            "soato": 1726287
+        },
+        {
+            "active": 1,
+            "districtCode": 8,
+            "name": "Yashnobodsky district",
+            "nameRu": "Яшнободский район",
+            "nameUzCyrl": "Яшнобод тумани",
+            "nameUzLatn": "Yashnobod tumani",
+            "regionId": 26,
+            "soato": 1726290
+        },
+        {
+            "active": 1,
+            "districtCode": 12,
+            "name": "Yangihayot tumani",
+            "nameRu": "Янгихаётский район",
+            "nameUzCyrl": "Янгихаёт тумани",
+            "nameUzLatn": "Yangihayot tumani",
+            "regionId": 26,
+            "soato": 1726292
+        },
+        {
+            "active": 1,
+            "districtCode": 6,
+            "name": "Chilanzar region",
+            "nameRu": "Чиланзарский район",
+            "nameUzCyrl": "Чилонзор тумани",
+            "nameUzLatn": "Chilonzor tumani",
+            "regionId": 26,
+            "soato": 1726294
+        }
+    ],
+    "error": "",
+    "requestId": "019bc69d-7408-7ec0-9ec2-a749175b3663"
+}
+```
+
+### Использование
+
+Полученное значение используется для:
+- `DistrictCode`
+- `DistrictName`
+
+---
+
