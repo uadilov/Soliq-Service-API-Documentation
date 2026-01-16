@@ -785,3 +785,30 @@ DELETE https://v3.soliqservis.uz:3443/api/lists-delete
 ```
 
 ---
+
+# Общая схема работы с ТТН
+
+## 1. Получение идентификаторов (GUID)
+
+### Endpoint
+
+```http
+GET /api/utils/guid
+```
+
+### Ответ
+
+```json
+{
+  "data": "6949f02f526393dfb2d94a60",
+  "success": true
+}
+```
+
+### Использование
+
+Полученное значение используется для:
+- `FacturaId`
+- `FacturaProductId`
+
+---
