@@ -808,7 +808,185 @@ GET /api/utils/guid
 ### Использование
 
 Полученное значение используется для:
-- `FacturaId`
-- `FacturaProductId`
+- `WaybillLocalId`
+
+---
+
+## 2. Получить Регионы ТТН
+
+### Endpoint
+
+```http
+GET /api/waybill-region-basic
+```
+
+### Ответ
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": [
+        {
+            "active": 1,
+            "code": 1730,
+            "districtCode": 0,
+            "name": "Fergana region",
+            "nameRu": "Ферганская область",
+            "nameUzCyrl": "Фарғона вилояти",
+            "nameUzLatn": "Farg'ona viloyati",
+            "regionId": 30
+        },
+        {
+            "active": 1,
+            "code": 1735,
+            "districtCode": 0,
+            "name": "Republic of Karakalpakstan",
+            "nameRu": "Республика Каракалпакстан",
+            "nameUzCyrl": "Қорақалпоғистон Республикаси",
+            "nameUzLatn": "Qoraqalpog'iston Respublikasi",
+            "regionId": 35
+        },
+        {
+            "active": 1,
+            "code": 1726,
+            "districtCode": 0,
+            "name": "Tashkent city",
+            "nameRu": "город Ташкент",
+            "nameUzCyrl": "Тошкент шаҳри",
+            "nameUzLatn": "Toshkent shahri",
+            "regionId": 26
+        },
+        {
+            "active": 1,
+            "code": 1727,
+            "districtCode": 0,
+            "name": "Tashkent region",
+            "nameRu": "Ташкентская область",
+            "nameUzCyrl": "Тошкент вилояти",
+            "nameUzLatn": "Toshkent viloyati",
+            "regionId": 27
+        },
+        {
+            "active": 1,
+            "code": 1733,
+            "districtCode": 0,
+            "name": "Khorezm region",
+            "nameRu": "Хорезмская область",
+            "nameUzCyrl": "Хоразм вилояти",
+            "nameUzLatn": "Xorazm viloyati",
+            "regionId": 33
+        },
+        {
+            "active": 1,
+            "code": 1724,
+            "districtCode": 0,
+            "name": "Syrdarya region",
+            "nameRu": "Сырдарьинская область",
+            "nameUzCyrl": "Сирдарё вилояти",
+            "nameUzLatn": "Sirdaryo viloyati",
+            "regionId": 24
+        },
+        {
+            "active": 1,
+            "code": 1703,
+            "districtCode": 0,
+            "name": "Andijan region",
+            "nameRu": "Андижанская область",
+            "nameUzCyrl": "Андижон вилояти",
+            "nameUzLatn": "Andijon viloyati",
+            "regionId": 3
+        },
+        {
+            "active": 1,
+            "code": 1706,
+            "districtCode": 0,
+            "name": "Bukhara region",
+            "nameRu": "Бухарская область",
+            "nameUzCyrl": "Бухоро вилояти",
+            "nameUzLatn": "Buxoro viloyati",
+            "regionId": 6
+        },
+        {
+            "active": 1,
+            "code": 1710,
+            "districtCode": 0,
+            "name": "Kashkadarya region",
+            "nameRu": "Кашкадарьинская область",
+            "nameUzCyrl": "Қашқадарё вилояти",
+            "nameUzLatn": "Qashqadaryo viloyati",
+            "regionId": 10
+        },
+        {
+            "active": 1,
+            "code": 1712,
+            "districtCode": 0,
+            "name": "Navoi region",
+            "nameRu": "Навоийская область",
+            "nameUzCyrl": "Навоий вилояти",
+            "nameUzLatn": "Navoiy viloyati",
+            "regionId": 12
+        },
+        {
+            "active": 1,
+            "code": 1708,
+            "districtCode": 0,
+            "name": "Jizzakh region",
+            "nameRu": "Джизакская область",
+            "nameUzCyrl": "Жиззах вилояти",
+            "nameUzLatn": "Jizzax viloyati",
+            "regionId": 8
+        },
+        {
+            "active": 1,
+            "code": 1718,
+            "districtCode": 0,
+            "name": "Samarkand region",
+            "nameRu": "Самаркандская область",
+            "nameUzCyrl": "Самарқанд вилояти",
+            "nameUzLatn": "Samarqand viloyati",
+            "regionId": 18
+        },
+        {
+            "active": 1,
+            "code": 1722,
+            "districtCode": 0,
+            "name": "Surkhandarya region",
+            "nameRu": "Сурхандарьинская область",
+            "nameUzCyrl": "Сурхондарё вилояти",
+            "nameUzLatn": "Surxondaryo viloyati",
+            "regionId": 22
+        },
+        {
+            "active": 1,
+            "code": 1714,
+            "districtCode": 0,
+            "name": "Namangan region",
+            "nameRu": "Наманганская область",
+            "nameUzCyrl": "Наманган вилояти",
+            "nameUzLatn": "Namangan viloyati",
+            "regionId": 14
+        },
+        {
+            "active": 1,
+            "code": 1750,
+            "districtCode": 1,
+            "name": "Xududlararo inspeksiya",
+            "nameRu": "МРИ",
+            "nameUzCyrl": "Ҳудудлараро инспекция",
+            "nameUzLatn": "Xududlararo inspeksiya",
+            "regionId": 50
+        }
+    ],
+    "error": "",
+    "requestId": "019bc697-70a9-739e-92a5-42a1b62295ba"
+}
+```
+
+### Использование
+
+Полученное значение используется для:
+- `RegionId`
+-  `RegionName`
 
 ---
