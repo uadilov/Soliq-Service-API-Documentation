@@ -715,7 +715,7 @@ POST /frontend/timestamp/pkcs7
 #### Endpoint
 
 ```http
-POST https://v3.soliqservis.uz:3443/api/factura/cancel?tin=303303592
+POST /api/factura/cancel?tin=303303592
 ```
 
 #### Body
@@ -757,7 +757,7 @@ POST https://v3.soliqservis.uz:3443/api/factura/cancel?tin=303303592
 #### Endpoint
 
 ```http
-DELETE https://v3.soliqservis.uz:3443/api/lists-delete
+DELETE /api/lists-delete
 ```
 
 #### Body
@@ -1834,3 +1834,41 @@ GET /api/get-all-docs?ownerTin=303303592&offset=0&fromDocDate=2025-01-01&folderI
     "requestId": "019bda98-a9d2-7320-ab43-2cfc95123d9c"
 }
 ```
+---
+
+## 12. Удалить сохранённые ТТН
+
+### Авторизация
+
+**Basic Auth (обязательна)**
+
+#### Endpoint
+
+```http
+DELETE /api/lists-delete
+```
+
+#### Body
+
+```json
+{
+  "docIds": [
+    "<waybill id>"
+  ],
+  "ownerTin": "303303592"
+}
+```
+
+#### Пример ответа
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": "OK",
+    "error": "",
+    "requestId": "019bdaa5-b86e-7f24-87ef-8455003e9d81"
+}
+```
+
+---
