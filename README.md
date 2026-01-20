@@ -1443,4 +1443,224 @@ POST /api/waybill2-create
 | `sign` | string | Подписанный PKCS7 с timestamp |
 
 ---
+## 8. Получение ТТН по ID
+
+### Endpoint
+
+```http
+GET /api/waybill2-get/{id}
+
+```
+
+### Назначение
+
+Получение полной информации о ТТН по её уникальному идентификатору.
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Параметры URL
+
+| Параметр | Тип | Описание |
+|----------|-----|---------|
+| `id` | string | Уникальный идентификатор ТТН (WaybillId) |
+
+### Schema ответа
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": {
+        "Waybill": {
+            "WaybillLocalId": "696a1680522ff78906a1654f",
+            "DeliveryType": 2,
+            "DeliveryCost": 0,
+            "TotalDistance": 0,
+            "TotalDeliveryCost": 0,
+            "HasCommittent": false,
+            "WaybillDoc": {
+                "WaybillNo": "8301260378",
+                "WaybillDate": "2026-01-14"
+            },
+            "ContractDoc": {
+                "ContractNo": "1067/F",
+                "ContractDate": "2025-02-13"
+            },
+            "Consignor": {
+                "TinOrPinfl": "303303592",
+                "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+                "BranchCode": "",
+                "BranchName": ""
+            },
+            "Consignee": {
+                "TinOrPinfl": "305101431",
+                "Name": "\"SOG`LOM XAYOT SARI\" XUSUSIY KORXONA",
+                "BranchCode": "",
+                "BranchName": ""
+            },
+            "FreightForwarder": {
+                "TinOrPinfl": "303303592",
+                "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+                "BranchCode": "",
+                "BranchName": ""
+            },
+            "Carrier": {
+                "TinOrPinfl": "303303592",
+                "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+                "BranchCode": "",
+                "BranchName": ""
+            },
+            "Client": null,
+            "Payer": null,
+            "ResponsiblePerson": {
+                "Pinfl": "51106007010036",
+                "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+            },
+            "TransportType": 1,
+            "Roadway": {
+                "Driver": {
+                    "Pinfl": "51106007010036",
+                    "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+                },
+                "Truck": {
+                    "RegNo": "01 120 GJA",
+                    "Model": "LABO"
+                },
+                "Trailer": null,
+                "Carriages": null,
+                "ProductGroups": [
+                    {
+                        "LoadingPoint": {
+                            "DistrictCode": 13,
+                            "DistrictName": "Sherobod tumani",
+                            "Latitude": 0,
+                            "Longitude": 0,
+                            "MahallaId": null,
+                            "MahallaName": null,
+                            "Address": "Tansiqboyev,  24",
+                            "RegionId": 22,
+                            "RegionName": "Surxondaryo viloyati"
+                        },
+                        "LoadingTrustee": null,
+                        "UnloadingPoint": {
+                            "DistrictCode": 7,
+                            "DistrictName": "Sirdaryo tumani",
+                            "Latitude": 0,
+                            "Longitude": 0,
+                            "MahallaId": null,
+                            "MahallaName": null,
+                            "Address": "Azimov, 49",
+                            "RegionId": 24,
+                            "RegionName": "Sirdaryo viloyati"
+                        },
+                        "UnloadingTrustee": null,
+                        "UnloadingEmpowerment": null,
+                        "ProductInfo": {
+                            "TotalDeliverySum": 143296,
+                            "TotalWeightBrutto": 0,
+                            "Products": [
+                                {
+                                    "OrdNo": 1,
+                                    "CommittentTinOrPinfl": null,
+                                    "CommittentName": null,
+                                    "ProductName": "БиоГая \"BioGaia\" пробиотик дет.капли 5мл",
+                                    "CatalogCode": "03004124002006001",
+                                    "CatalogName": "Натрия хлорид - B05XA03 НАТРИЯ ХЛОРИД (Dalximfarm AJ) Растворитель для приготовления лекарственных форм 0,9% 10мл ампулы №10(1x10)",
+                                    "PackageCode": "1166464",
+                                    "PackageName": "шт (флакон (0.9%, 10 мл))",
+                                    "Amount": 1,
+                                    "Price": 143296,
+                                    "DeliverySum": 143296,
+                                    "WeightBrutto": 0,
+                                    "WeightNetto": 0
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "OtherCarOwners": null
+            },
+            "Airway": null,
+            "Railway": null,
+            "Shipway": null,
+            "WaybillLocalType": 0,
+            "OldWaybillDoc": null,
+            "SingleSidedType": 0,
+            "ResponsibleCompany": null
+        },
+        "Status": "template",
+        "Sign": "",
+        "PageStatus": "",
+        "CreatedAt": "2026-01-19 10:43:00",
+        "UpdatedAt": "2026-01-19 10:43:00",
+        "Consignor": [
+            {
+                "Name": "DEV SHOMURZAYEV XUSNIDDIN G‘ULOM O‘G‘LI",
+                "Time": "16.01.2026 15:44:47",
+                "No": 410069819,
+                "Tin": "303303592",
+                "BranchCode": "",
+                "Host": "",
+                "Ip": "",
+                "Status": "receive"
+            }
+        ],
+        "Consignee": [
+            {
+                "Name": "",
+                "Time": "",
+                "No": 0,
+                "Tin": "",
+                "BranchCode": "",
+                "Host": "",
+                "Ip": "",
+                "Status": ""
+            }
+        ],
+        "Responsibleperson": [
+            {
+                "Name": "",
+                "Time": "",
+                "No": 0,
+                "Tin": "",
+                "BranchCode": "",
+                "Host": "",
+                "Ip": "",
+                "Status": ""
+            },
+            {
+                "Name": "",
+                "Time": "",
+                "No": 0,
+                "Tin": "",
+                "BranchCode": "",
+                "Host": "",
+                "Ip": "",
+                "Status": ""
+            }
+        ],
+        "GNK": null,
+        "OrganizationId": "93b87f85-54cb-48ac-bf08-191ac06e407a",
+        "ErrMsg": ""
+    },
+    "error": "",
+    "requestId": "019bd9e4-9d9a-7e6b-bdd6-a91a3566269a"
+}
+```
+
+---
+### Статусы фактуры
+| Статус | Описание |
+|----------|---------|
+| `template` | Сохраненные |
+| `consignor_sent` | Отправлено |
+| `cancel` | Отменен |
+| `consignee_accept` | Принято |
+| `consignee_reject` | Отказано |
+| `fail` | Неудачно |
+
+
+ 
 
