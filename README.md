@@ -1663,8 +1663,8 @@ GET /api/waybill2-get/{id}
 
 
 ## 9. Получить сохраненные ТТН
-### Endpoint
 
+### Endpoint
 ```http
 GET /api/get-all-docs
 ```
@@ -1748,4 +1748,37 @@ GET /api/get-all-docs?ownerTin=303303592&docStatus=template&offset=0&fromDocDate
     "error": "",
     "requestId": "019bda8b-8d03-7549-97d9-82742b37e395"
 }
+```
+## 10. Получить отправленные ТТН
+
+### Endpoint
+```http
+GET /api/get-all-docs
+```
+
+### Назначение
+Список подписанных и отправленных в роуминг ТТН.
+
+ - Basic Auth (обязательна)
+
+### Query параметры
+
+| Key | Value |
+|----------|-----|
+| `docType` | waybill2 |
+| `ownerTin` | < tin > |
+| `fromDocDate` | yyyy-mm-dd |
+| `limit` | < limit > |
+| `offset` | 0 |
+| `folderId` | 0 |
+
+### Пример запроса
+```http
+GET /api/get-all-docs?ownerTin=303303592&offset=0&fromDocDate=2025-01-01&folderId=0&limit=20&docType=waybill2
+```
+
+### Schema ответа
+
+```json
+
 ```
