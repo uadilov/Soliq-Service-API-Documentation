@@ -1666,7 +1666,7 @@ GET /api/waybill2-get/{id}
 ### Endpoint
 
 ```http
-GET api/get-all-docs
+GET /api/get-all-docs
 ```
 
 ### Назначение
