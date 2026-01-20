@@ -1835,6 +1835,67 @@ GET /api/get-all-docs?ownerTin=303303592&offset=0&fromDocDate=2025-01-01&folderI
 }
 ```
 ---
+## 11. Отмена ТТН (Cancel Waybill)
+
+### Авторизация
+
+**Basic Auth (обязательна)**
+
+### 11.1 Формирование подписи PKCS#7
+
+JSON ТТН подписывается с использованием ключа ЭЦП в формате PKCS#7. JSON должен быть в минифицированном формате.
+
+### 11.2 Проставление timestamp
+
+#### Endpoint
+
+```http
+POST /frontend/timestamp/pkcs7
+```
+
+#### Результат
+
+Подписанный PKCS7 с timestamp.
+
+### 11.3 Пример для получения подписи
+
+```json
+{
+  "WaybillLocalId": "696f46c54e78badf0eb85a28",
+  "ConsignorTinOrPinfl": "303303592",
+  WaybillLocalSignType: "ConsignorCanceled"
+}
+```
+
+### 11.4 POST запрос для отмены ТТН
+
+#### Endpoint
+
+```http
+POST /api/waybill2-cancel-basic?tin=303303592
+```
+
+#### Body
+
+```json
+{
+  "sign": "<Sign>"
+}
+```
+
+#### Пример ответа
+
+```json
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": "Canceled Success",
+    "error": "",
+    "requestId": "019bdb2b-c500-75be-938c-b6026dd84213"
+}
+```
+
+---
 
 ## 12. Удалить сохранённые ТТН
 
