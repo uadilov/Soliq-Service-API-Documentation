@@ -106,7 +106,6 @@ POST /api/factura-save
 ### Авторизация
 
 - Basic Auth (обязательна)
-- Заголовок `Authorization` обязателен
 
 ### Документация
 
@@ -1257,6 +1256,191 @@ GET /api/np1/bytin?tinOrPinfl=<PINFL>
 Полученное значение используется для:
 - `Pinfl`
 - `FullName`
+
+---
+
+## 6. Подписание ТТН (ЭЦП)
+
+### Документация
+
+- [Структура JSON – ТТН](https://rouming.notion.site/TTYu-a228c1c62da64b9a9b91a5ee99d8dd1b)
+
+### JSON-пример для подписания
+
+### От продавца к покупателю:
+```json
+{
+  "WaybillLocalId": "696a1680522ff78906a1654f",
+  "SingleSidedType": 0,
+  "DeliveryType": 2,
+  "DeliveryCost": 0,
+  "TotalDistance": 0,
+  "TotalDeliveryCost": 0,
+  "HasCommittent": false,
+  "WaybillDoc": {
+    "WaybillNo": "8301260378",
+    "WaybillDate": "2026-01-14"
+  },
+  "OldWaybillDoc": null,
+  "WaybillLocalType": 0,
+  "ContractDoc": {
+    "ContractNo": "1067/F",
+    "ContractDate": "2025-02-13"
+  },
+  "Consignor": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Consignee": {
+    "TinOrPinfl": "305101431",
+    "Name": "\"SOG`LOM XAYOT SARI\" XUSUSIY KORXONA",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "FreightForwarder": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Carrier": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Client": null,
+  "Payer": null,
+  "ResponsiblePerson": {
+    "Pinfl": "51106007010036",
+    "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+  },
+  "ResponsibleCompany": null,
+  "TransportType": 1,
+  "Airway": null,
+  "Roadway": {
+    "Driver": {
+      "Pinfl": "51106007010036",
+      "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+    },
+    "OtherCarOwners": null,
+    "Truck": {
+      "RegNo": "01 120 GJA",
+      "Model": "LABO"
+    },
+    "Trailer": null,
+    "Carriages": null,
+    "ProductGroups": [
+      {
+        "LoadingPoint": {
+          "DistrictCode": "13",
+          "DistrictName": "Sherobod tumani",
+          "Latitude": null,
+          "Longitude": null,
+          "MahallaId": null,
+          "MahallaName": null,
+          "Address": "Tansiqboyev,  24",
+          "RegionId": 22,
+          "RegionName": "Surxondaryo viloyati"
+        },
+        "LoadingTrustee": null,
+        "UnloadingPoint": {
+          "DistrictCode": "7",
+          "DistrictName": "Sirdaryo tumani",
+          "Latitude": null,
+          "Longitude": null,
+          "MahallaId": null,
+          "MahallaName": null,
+          "Address": "Azimov, 49",
+          "RegionId": 24,
+          "RegionName": "Sirdaryo viloyati"
+        },
+        "UnloadingTrustee": null,
+        "UnloadingEmpowerment": null,
+        "ProductInfo": {
+          "TotalDeliverySum": "143296.00",
+          "TotalWeightBrutto": "0.00000",
+          "Products": [
+            {
+              "OrdNo": 1,
+              "CommittentTinOrPinfl": null,
+              "CommittentName": null,
+              "ProductName": "БиоГая \"BioGaia\" пробиотик дет.капли 5мл",
+              "CatalogCode": "03004124002006001",
+              "CatalogName": "Натрия хлорид - B05XA03 НАТРИЯ ХЛОРИД (Dalximfarm AJ) Растворитель для приготовления лекарственных форм 0,9% 10мл ампулы №10(1x10)",
+              "PackageCode": "1166464",
+              "PackageName": "шт (флакон (0.9%, 10 мл))",
+              "Amount": 1,
+              "Price": 143296,
+              "DeliverySum": 143296,
+              "WeightBrutto": 0,
+              "WeightNetto": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Railway": null,
+  "Shipway": null
+}
+```
+
+### Со склада на склад:
+```json
+{}
+```
+
+### 6.1 Формирование подписи PKCS#7
+
+JSON фактуры подписывается с использованием ключа ЭЦП в формате PKCS#7. JSON должен быть в минифицированном формате.
+
+### 6.2 Проставление timestamp
+
+#### Endpoint
+
+```http
+POST /frontend/timestamp/pkcs7
+```
+
+#### Результат
+
+Подписанный PKCS7 с timestamp.
+
+---
+## 7. Создание и отправка ТТН (waybill-create)
+
+### Endpoint
+
+```http
+POST /api/waybill2-create
+```
+
+### Назначение
+
+- Подписание ТТН
+- Отправка ТТН в Soliq Service или в роуминг
+- Юридическое оформление документа
+
+### Авторизация
+
+- Basic Auth (обязательна)
+
+### Тело запроса
+
+```json
+{
+  "sign": "<PKCS7_WITH_TIMESTAMP>"
+}
+```
+
+### Параметры
+
+| Параметр | Тип | Описание |
+|----------|-----|---------|
+| `sign` | string | Подписанный PKCS7 с timestamp |
 
 ---
 
