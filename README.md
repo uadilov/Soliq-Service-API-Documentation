@@ -1863,7 +1863,7 @@ POST /frontend/timestamp/pkcs7
 {
   "WaybillLocalId": "696f46c54e78badf0eb85a28",
   "ConsignorTinOrPinfl": "303303592",
-  WaybillLocalSignType: "ConsignorCanceled"
+  "WaybillLocalSignType": "ConsignorCanceled"
 }
 ```
 
