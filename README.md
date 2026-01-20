@@ -1778,7 +1778,59 @@ GET /api/get-all-docs?ownerTin=303303592&offset=0&fromDocDate=2025-01-01&folderI
 ```
 
 ### Schema ответа
-
 ```json
-
+{
+    "status": "OK",
+    "description": "The request has succeeded",
+    "data": {
+        "documents": [
+            {
+                "docId": "696a1346522ff78906a1654e",
+                "docDate": "2026-01-14",
+                "docNo": "8301260378",
+                "docType": "waybill2",
+                "docStatus": "cancel",
+                "contractDocNo": "1067/F",
+                "contractDocDate": "2025-02-13",
+                "totalDeliverySum": 143296,
+                "totalVatSum": 0,
+                "totalDeliverySumWithVat": 143296,
+                "ownerTin": "303303592",
+                "ownerName": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+                "ownerBranchCode": "",
+                "partnerTin": "305101431",
+                "partnerName": "\"SOG`LOM XAYOT SARI\" XUSUSIY KORXONA",
+                "partnerBranchCode": "",
+                "agentTin": "51106007010036",
+                "agentName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI",
+                "hasVat": false,
+                "createdAt": "2026-01-16 15:30:31",
+                "updatedAt": "2026-01-20 10:55:41",
+                "commission": false,
+                "unilateral": false,
+                "marked": false,
+                "hasbenefit": false,
+                "hasLot": false,
+                "isRead": 1,
+                "isReadAgent": 0,
+                "ownerBranchName": "",
+                "partnerBranchName": "",
+                "note": "",
+                "organizationId": "",
+                "folderId": 0,
+                "facturaType": "0",
+                "reqId": "",
+                "deletedAt": 0
+            }
+        ],
+        "count": 1,
+        "totalDeliverySum": 143296,
+        "totalVatSum": 0,
+        "totalDeliverySumWithVat": 143296,
+        "hasMarking": false,
+        "hasNote": false
+    },
+    "error": "",
+    "requestId": "019bda98-a9d2-7320-ab43-2cfc95123d9c"
+}
 ```
