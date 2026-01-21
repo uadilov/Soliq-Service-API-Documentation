@@ -813,10 +813,6 @@ GET /api/utils/guid
 
 ## 2. Получить Регионы ТТН
 
-### Авторизация
-
-- Basic Auth (обязательна)
-
 ### Endpoint
 
 ```http
