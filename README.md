@@ -1647,12 +1647,12 @@ GET /api/waybill2-get/{id}
 ```
 
 ---
-### Статусы фактуры
+### Статусы ТТН
 | Статус | Описание |
 |----------|---------|
 | `template` | Сохраненные |
 | `consignor_sent` | Отправлено |
-| `cancel` | Отменен |
+| `consignor_cancel` | Отменен |
 | `consignee_accept` | Принято |
 | `consignee_reject` | Отказано |
 | `fail` | Неудачно |
