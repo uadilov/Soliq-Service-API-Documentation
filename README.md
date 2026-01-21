@@ -1184,8 +1184,8 @@ GET /api/waybill-transports-basic?tinOrPinfl=<INN>
 ### Использование
 
 Полученное значение используется для:
-- `DistrictCode`
-- `DistrictName`
+- `Model`
+- `RegNo`
 
 ---
 
