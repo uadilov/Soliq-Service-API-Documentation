@@ -1270,23 +1270,20 @@ GET /api/np1/bytin?tinOrPinfl=<PINFL>
 ### От продавца к покупателю:
 ```json
 {
-  "WaybillLocalId": "696a1680522ff78906a1654f",
+  "WaybillLocalId": "6971e7fc8046e8779d5cf08c",
   "SingleSidedType": 0,
-  "DeliveryType": 2,
-  "DeliveryCost": 0,
-  "TotalDistance": 0,
-  "TotalDeliveryCost": 0,
+  "DeliveryType": 1,
+  "DeliveryCost": 1000,
+  "TotalDistance": 20,
+  "TotalDeliveryCost": 20000,
   "HasCommittent": false,
   "WaybillDoc": {
-    "WaybillNo": "8301260378",
-    "WaybillDate": "2026-01-14"
+    "WaybillNo": "8001012450",
+    "WaybillDate": "2026-01-17"
   },
   "OldWaybillDoc": null,
   "WaybillLocalType": 0,
-  "ContractDoc": {
-    "ContractNo": "1067/F",
-    "ContractDate": "2025-02-13"
-  },
+  "ContractDoc": null,
   "Consignor": {
     "TinOrPinfl": "303303592",
     "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
@@ -1294,89 +1291,96 @@ GET /api/np1/bytin?tinOrPinfl=<PINFL>
     "BranchCode": ""
   },
   "Consignee": {
-    "TinOrPinfl": "305101431",
-    "Name": "\"SOG`LOM XAYOT SARI\" XUSUSIY KORXONA",
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
     "BranchName": "",
     "BranchCode": ""
   },
   "FreightForwarder": {
-    "TinOrPinfl": "303303592",
-    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "TinOrPinfl": "309165444",
+    "Name": "\"GRAND PHARM LOGISTICS HUB\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
     "BranchName": "",
     "BranchCode": ""
   },
   "Carrier": {
-    "TinOrPinfl": "303303592",
-    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "TinOrPinfl": "309165444",
+    "Name": "\"GRAND PHARM LOGISTICS HUB\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
     "BranchName": "",
     "BranchCode": ""
   },
-  "Client": null,
+  "Client": {
+    "ContractNo": "",
+    "ContractDate": "",
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchCode": "",
+    "BranchName": ""
+  },
   "Payer": null,
   "ResponsiblePerson": {
-    "Pinfl": "51106007010036",
-    "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+    "Pinfl": "32204890600084",
+    "FullName": "GULYAMOV DILMUROD TAXIROVICH"
   },
   "ResponsibleCompany": null,
   "TransportType": 1,
   "Airway": null,
   "Roadway": {
     "Driver": {
-      "Pinfl": "51106007010036",
-      "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+      "Pinfl": "32204890600084",
+      "FullName": "GULYAMOV DILMUROD TAXIROVICH"
     },
     "OtherCarOwners": null,
     "Truck": {
-      "RegNo": "01 120 GJA",
-      "Model": "LABO"
+      "RegNo": "01 325 GMA",
+      "Model": "MAN TGX EURO 6"
     },
     "Trailer": null,
     "Carriages": null,
     "ProductGroups": [
       {
         "LoadingPoint": {
-          "DistrictCode": "13",
-          "DistrictName": "Sherobod tumani",
+          "DistrictCode": 11,
+          "DistrictName": "Toshkent tumani",
           "Latitude": null,
           "Longitude": null,
           "MahallaId": null,
           "MahallaName": null,
-          "Address": "Tansiqboyev,  24",
-          "RegionId": 22,
-          "RegionName": "Surxondaryo viloyati"
+          "Address": "Bog'zor MFY,  Bog' ko'chasi 1-А uу",
+          "RegionId": 27,
+          "RegionName": "Toshkent viloyati"
         },
         "LoadingTrustee": null,
         "UnloadingPoint": {
-          "DistrictCode": "7",
-          "DistrictName": "Sirdaryo tumani",
+          "DistrictCode": 1,
+          "DistrictName": "Namangan shahar",
           "Latitude": null,
           "Longitude": null,
           "MahallaId": null,
           "MahallaName": null,
-          "Address": "Azimov, 49",
-          "RegionId": 24,
-          "RegionName": "Sirdaryo viloyati"
+          "Address": "Xalqlar do'stligi MFY,  Sanoat ko'chasi 52",
+          "RegionId": 14,
+          "RegionName": "Namangan viloyati"
         },
         "UnloadingTrustee": null,
         "UnloadingEmpowerment": null,
         "ProductInfo": {
-          "TotalDeliverySum": "143296.00",
-          "TotalWeightBrutto": "0.00000",
+          "TotalDeliverySum": "13593750.00",
+          "TotalWeightBrutto": "1.00000",
           "Products": [
             {
               "OrdNo": 1,
               "CommittentTinOrPinfl": null,
               "CommittentName": null,
-              "ProductName": "БиоГая \"BioGaia\" пробиотик дет.капли 5мл",
+              "ProductName": "Натрия хлорид амп. 0,9% 5мл №10",
               "CatalogCode": "03004124002006001",
-              "CatalogName": "Натрия хлорид - B05XA03 НАТРИЯ ХЛОРИД (Dalximfarm AJ) Растворитель для приготовления лекарственных форм 0,9% 10мл ампулы №10(1x10)",
-              "PackageCode": "1166464",
-              "PackageName": "шт (флакон (0.9%, 10 мл))",
-              "Amount": 1,
-              "Price": 143296,
-              "DeliverySum": 143296,
-              "WeightBrutto": 0,
-              "WeightNetto": 0
+              "CatalogName": "Natriy xlorid - B05XA03 НАТРИЯ ХЛОРИД (Dalximfarm AJ) Dori shakllarini tayyorlash uchun erituvchi 0,9% 10ml ampulalar №10(1x10)",
+              "PackageCode": "1169157",
+              "PackageName": "qadoq=10 dona (flakon (0.9%, 10 ml))",
+              "Amount": 4350,
+              "Price": 3125,
+              "DeliverySum": 13593750,
+              "WeightBrutto": 1,
+              "WeightNetto": 1
             }
           ]
         }
