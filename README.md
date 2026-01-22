@@ -819,6 +819,10 @@ GET /api/utils/guid
 GET /api/waybill-region-basic
 ```
 
+### Авторизация
+
+- Basic Auth (обязательна)
+
 ### Ответ
 
 ```json
