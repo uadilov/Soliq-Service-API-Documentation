@@ -1270,6 +1270,127 @@ GET /api/np1/bytin?tinOrPinfl=<PINFL>
 ### От продавца к покупателю:
 ```json
 {
+  "WaybillLocalId": "696a1680522ff78906a1654f",
+  "SingleSidedType": 0,
+  "DeliveryType": 2,
+  "DeliveryCost": 0,
+  "TotalDistance": 0,
+  "TotalDeliveryCost": 0,
+  "HasCommittent": false,
+  "WaybillDoc": {
+    "WaybillNo": "8301260378",
+    "WaybillDate": "2026-01-14"
+  },
+  "OldWaybillDoc": null,
+  "WaybillLocalType": 0,
+  "ContractDoc": {
+    "ContractNo": "1067/F",
+    "ContractDate": "2025-02-13"
+  },
+  "Consignor": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Consignee": {
+    "TinOrPinfl": "305101431",
+    "Name": "\"SOG`LOM XAYOT SARI\" XUSUSIY KORXONA",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "FreightForwarder": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Carrier": {
+    "TinOrPinfl": "303303592",
+    "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
+    "BranchName": "",
+    "BranchCode": ""
+  },
+  "Client": null,
+  "Payer": null,
+  "ResponsiblePerson": {
+    "Pinfl": "51106007010036",
+    "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+  },
+  "ResponsibleCompany": null,
+  "TransportType": 1,
+  "Airway": null,
+  "Roadway": {
+    "Driver": {
+      "Pinfl": "51106007010036",
+      "FullName": "RAYIMJONOV MUXAMMADUMAR OLIMJON O‘G‘LI"
+    },
+    "OtherCarOwners": null,
+    "Truck": {
+      "RegNo": "01 120 GJA",
+      "Model": "LABO"
+    },
+    "Trailer": null,
+    "Carriages": null,
+    "ProductGroups": [
+      {
+        "LoadingPoint": {
+          "DistrictCode": "13",
+          "DistrictName": "Sherobod tumani",
+          "Latitude": null,
+          "Longitude": null,
+          "MahallaId": null,
+          "MahallaName": null,
+          "Address": "Tansiqboyev,  24",
+          "RegionId": 22,
+          "RegionName": "Surxondaryo viloyati"
+        },
+        "LoadingTrustee": null,
+        "UnloadingPoint": {
+          "DistrictCode": "7",
+          "DistrictName": "Sirdaryo tumani",
+          "Latitude": null,
+          "Longitude": null,
+          "MahallaId": null,
+          "MahallaName": null,
+          "Address": "Azimov, 49",
+          "RegionId": 24,
+          "RegionName": "Sirdaryo viloyati"
+        },
+        "UnloadingTrustee": null,
+        "UnloadingEmpowerment": null,
+        "ProductInfo": {
+          "TotalDeliverySum": "143296.00",
+          "TotalWeightBrutto": "0.00000",
+          "Products": [
+            {
+              "OrdNo": 1,
+              "CommittentTinOrPinfl": null,
+              "CommittentName": null,
+              "ProductName": "БиоГая \"BioGaia\" пробиотик дет.капли 5мл",
+              "CatalogCode": "03004124002006001",
+              "CatalogName": "Натрия хлорид - B05XA03 НАТРИЯ ХЛОРИД (Dalximfarm AJ) Растворитель для приготовления лекарственных форм 0,9% 10мл ампулы №10(1x10)",
+              "PackageCode": "1166464",
+              "PackageName": "шт (флакон (0.9%, 10 мл))",
+              "Amount": 1,
+              "Price": 143296,
+              "DeliverySum": 143296,
+              "WeightBrutto": 0,
+              "WeightNetto": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Railway": null,
+  "Shipway": null
+}
+```
+
+### Со склада на склад:
+```json
+{
   "WaybillLocalId": "6971e7fc8046e8779d5cf08c",
   "SingleSidedType": 0,
   "DeliveryType": 1,
@@ -1389,133 +1510,6 @@ GET /api/np1/bytin?tinOrPinfl=<PINFL>
   },
   "Railway": null,
   "Shipway": null
-}
-```
-
-### Со склада на склад:
-```json
-{
-  "dataJson": {
-    "WaybillLocalId": "69709a06e13e0a447193470e",
-    "SingleSidedType": 0,
-    "DeliveryType": 1,
-    "DeliveryCost": 30113.67,
-    "TotalDistance": 0,
-    "TotalDeliveryCost": 9034100,
-    "HasCommittent": false,
-    "WaybillDoc": {
-      "WaybillNo": "9999999998",
-      "WaybillDate": "2026-01-20"
-    },
-    "OldWaybillDoc": null,
-    "WaybillLocalType": 0,
-    "ContractDoc": null,
-    "Consignor": {
-      "TinOrPinfl": "303303592",
-      "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-      "BranchName": "",
-      "BranchCode": ""
-    },
-    "Consignee": {
-      "TinOrPinfl": "303303592",
-      "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-      "BranchName": "",
-      "BranchCode": ""
-    },
-    "FreightForwarder": {
-      "TinOrPinfl": "309165444",
-      "Name": "\"GRAND PHARM LOGISTICS HUB\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-      "BranchName": "",
-      "BranchCode": ""
-    },
-    "Carrier": {
-      "TinOrPinfl": "309165444",
-      "Name": "\"GRAND PHARM LOGISTICS HUB\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-      "BranchName": "",
-      "BranchCode": ""
-    },
-    "Client": {
-      "ContractNo": "1",
-      "ContractDate": "2023-05-01",
-      "TinOrPinfl": "303303592",
-      "Name": "\"GRAND  PHARM  TRADE\" MAS'ULIYATI CHEKLANGAN JAMIYAT",
-      "BranchCode": "",
-      "BranchName": ""
-    },
-    "Payer": null,
-    "ResponsiblePerson": {
-      "Pinfl": "32204890600084",
-      "FullName": "GULYAMOV DILMUROD TAXIROVICH"
-    },
-    "ResponsibleCompany": null,
-    "TransportType": 1,
-    "Airway": null,
-    "Roadway": {
-      "Driver": {
-        "Pinfl": "32204890600084",
-        "FullName": "GULYAMOV DILMUROD TAXIROVICH"
-      },
-      "OtherCarOwners": null,
-      "Truck": {
-        "RegNo": "01 325 GMA",
-        "Model": "MAN TGX EURO 6"
-      },
-      "Trailer": null,
-      "Carriages": null
-    },
-    "ProductGroups": [
-      {
-        "LoadingPoint": {
-          "DistrictCode": 11,
-          "DistrictName": "Toshkent tumani",
-          "Latitude": null,
-          "Longitude": null,
-          "MahallaId": null,
-          "MahallaName": null,
-          "Address": "Bog'zor MFY,  Bog' ko'chasi 1-А uу",
-          "RegionId": 27,
-          "RegionName": "Toshkent viloyati"
-        },
-        "LoadingTrustee": null,
-        "UnloadingPoint": {
-          "DistrictCode": 1,
-          "DistrictName": "Namangan shahar",
-          "Latitude": null,
-          "Longitude": null,
-          "MahallaId": null,
-          "MahallaName": null,
-          "Address": "Xalqlar do'stligi MFY,  Sanoat ko'chasi 52",
-          "RegionId": 14,
-          "RegionName": "Namangan viloyati"
-        },
-        "UnloadingTrustee": null,
-        "UnloadingEmpowerment": null,
-        "ProductInfo": {
-          "TotalDeliverySum": "13593750.00",
-          "TotalWeightBrutto": "0.00000",
-          "Products": [
-            {
-              "OrdNo": 1,
-              "CommittentTinOrPinfl": null,
-              "CommittentName": null,
-              "ProductName": "Натрия хлорид амп. 0,9% 5мл №10",
-              "CatalogCode": "00902001001031001",
-              "CatalogName": "Зеленый чай развесной и упакованный всех видов (заварка) Akbar Gold китай листовой байховый 100 гр коробка",
-              "PackageCode": "1392342",
-              "PackageName": "шт. (коробка) 100 грамм",
-              "Amount": 4350,
-              "Price": 3125,
-              "DeliverySum": 13593750,
-              "WeightBrutto": 0,
-              "WeightNetto": 0
-            }
-          ]
-        }
-      }
-    ],
-    "Railway": null,
-    "Shipway": null
-  }
 }
 
 ```
