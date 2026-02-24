@@ -287,9 +287,6 @@ POST /api/factura-save
 
 
 #
-#
-#
-#
 ### JSON для услуги
 ``` json
 {
