@@ -253,6 +253,148 @@ POST /api/factura-save
 }
 ```
 
+
+### JSON для услуги
+``` json
+{
+  "Version": 1,
+  "FacturaType": 0,
+  "SingleSidedType": 0,
+  "HasMarking": false,
+  "FacturaId": "699c101bb08a6ca1cbeb7fb5",
+  "FacturaDoc": {
+    "FacturaNo": "99999999",
+    "FacturaDate": "2026-02-16"
+  },
+  "OldFacturaDoc": {
+    "OldFacturaId": "",
+    "OldFacturaNo": "",
+    "OldFacturaDate": ""
+  },
+  "ContractDoc": {
+    "ContractNo": "OP/B86",
+    "ContractDate": "2025-10-02"
+  },
+  "FacturaEmpowermentDoc": {
+    "EmpowermentNo": "",
+    "EmpowermentDateOfIssue": "",
+    "AgentFacturaId": "",
+    "AgentFio": "",
+    "AgentPinfl": ""
+  },
+  "ItemReleasedDoc": {
+    "ItemReleasedTin": null,
+    "ItemReleasedFio": "",
+    "ItemReleasedPinfl": ""
+  },
+  "SellerTin": "303303592",
+  "BuyerTin": "203335595",
+  "Seller": {
+    "Name": "\"GRAND  PHARM  TRADE\" MCHJ",
+    "Account": "20208000000458557001",
+    "BankId": "01036",
+    "Address": "город Ташкент Алмазарский район UZUMBOG' 10-TOR KO'CHASI, 28-A-UY  ",
+    "Mobile": "",
+    "WorkPhone": "",
+    "Oked": "",
+    "DistrictId": "",
+    "Director": "RAXIMOV ALISHER ABDUXAKIM O‘G‘LI",
+    "Accountant": "MIRSAATOV MIRSALAM XUDAYBERDIYEVICH",
+    "VatRegCode": "",
+    "VatRegStatus": null,
+    "BranchCode": "",
+    "BranchName": ""
+  },
+  "Buyer": {
+    "Name": "YUNFARKAM MCHJ",
+    "Account": "20208000404068900001",
+    "BankId": "00836",
+    "Address": "город Ташкент Юнусабадский район YUNUSOBOD-15",
+    "Mobile": "+998 71 202 22 25",
+    "WorkPhone": "+998 71 202 22 26",
+    "Oked": "69203",
+    "DistrictId": "2602",
+    "Director": "MUXAMMADOV NODIR KARIMOVICH",
+    "Accountant": "XVAN TATYANA ROMANOVNA",
+    "VatRegCode": "",
+    "VatRegStatus": null,
+    "BranchCode": "",
+    "BranchName": ""
+  },
+  "ForeignCompany": {
+    "CountryId": "",
+    "Name": "",
+    "Address": "",
+    "Bank": "",
+    "Account": ""
+  },
+  "ProductList": {
+    "FacturaProductId": "699c1032b08a6ca1cbeb7fb6",
+    "Tin": "303303592",
+    "HasExcise": false,
+    "HasVat": true,
+    "HasCommittent": false,
+    "HasLgota": false,
+    "HasMedical": false,
+    "HasCustom": false,
+    "HideReportCommittent": false,
+    "Products": [
+      {
+        "OrdNo": 1,
+        "CommittentName": "",
+        "CommittentTin": "",
+        "CommittentVatRegCode": "",
+        "CatalogCode": "10605003001000000",
+        "CatalogName": "Маркетинговые услуги",
+        "BarCode": "",
+        "Name": "Маркетинговые услуги",
+        "Serial": "",
+        "MeasureId": "",
+        "BaseSumma": 0,
+        "ProfitRate": 0,
+        "DispenseType": 0,
+        "Count": 1,
+        "Summa": 7232142.86,
+        "TotalSum": 0,
+        "DeliverySum": 7232142.86,
+        "ExciseRate": 0,
+        "ExciseSum": 0,
+        "VatRate": 12,
+        "VatSum": 867857.14,
+        "DeliverySumWithVat": 8100000,
+        "WithoutVat": false,
+        "PackageCode": "1492015",
+        "PackageName": "услуга (сум)",
+        "CommittentVatRegStatus": null,
+        "Origin": 3,
+        "Marks": null,
+        "ExchangeInfo": null,
+        "LgotaId": null,
+        "LgotaName": null,
+        "LgotaVatSum": 0,
+        "LgotaType": null,
+        "WarehouseId": null,
+        "WarehouseName": null
+      }
+    ]
+  },
+  "IncomeType": 0,
+  "LotId": "",
+  "ContractId": "",
+  "WaybillLocalIds": [],
+  "WaybillIds": [],
+  "FacturaInvestmentObjectDoc": {
+    "ObjectId": "",
+    "ObjectName": ""
+  },
+  "Notes": "",
+  "CreatedOperator": "",
+  "HasRent": false,
+  "FacturaRentDoc": null,
+  "MySoliqContractObjectDoc": null
+}
+```
+
 ---
 
 ## 6. Подписание фактуры (ЭЦП)
