@@ -226,7 +226,7 @@ POST /api/factura-save
         "CommittentVatRegStatus": null,
         "Origin": 2,
         "Marks": {
-          "ProductType": 1,
+          "ProductType": 4,
           "IdentTransUpak": [],
           "Kiz": ["00000000000000000002"],
           "NomUpak": []
@@ -258,6 +258,15 @@ POST /api/factura-save
 }
 ```
 ## Маркировки
+```json
+  "Marks": {
+    "ProductType": 4,
+    "IdentTransUpak": [],
+    "Kiz": ["00000000000000000002"],
+    "NomUpak": []
+  }
+```
+
 ### marks.ProductType — Тип товара
 
 | Значение | Описание |
@@ -270,6 +279,12 @@ POST /api/factura-save
 | `6` | Бытовая техника |
 | `8` | Медицинские изделия |
 | `11` | Минеральные удобрения и средства защиты растений |
+
+### Типы маркировки
+Kiz — Потребительская
+IdentTransUpak — Транспортная
+NomUpak — Групповая
+
 
 
 
