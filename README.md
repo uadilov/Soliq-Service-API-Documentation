@@ -257,9 +257,8 @@ POST /api/factura-save
   "MySoliqContractObjectDoc": null
 }
 ```
-
-### marks.ProductType
-### ProductType — Тип товара
+## Маркировки
+### marks.ProductType — Тип товара
 
 | Значение | Описание |
 |----------|-----|
