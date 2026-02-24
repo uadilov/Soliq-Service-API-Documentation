@@ -225,7 +225,12 @@ POST /api/factura-save
         "PackageName": "шт. (коробка) 100 грамм",
         "CommittentVatRegStatus": null,
         "Origin": 2,
-        "Marks": null,
+        "Marks": {
+          "ProductType": 1,
+          "IdentTransUpak": [],
+          "Kiz": ["00000000000000000002"],
+          "NomUpak": []
+        },
         "ExchangeInfo": null,
         "LgotaId": null,
         "LgotaName": null,
@@ -252,6 +257,21 @@ POST /api/factura-save
   "MySoliqContractObjectDoc": null
 }
 ```
+
+### marks.ProductType
+### ProductType — Тип товара
+
+| Значение | Описание |
+|----------|-----|
+| `1` | Табачная продукция |
+| `2` | Алкогольная продукция (кроме пива) |
+| `3` | Пиво и пивные напитки |
+| `4` | Лекарства |
+| `5` | Вода и безалкогольные напитки |
+| `6` | Бытовая техника |
+| `8` | Медицинские изделия |
+| `11` | Минеральные удобрения и средства защиты растений |
+
 
 
 ### JSON для услуги
